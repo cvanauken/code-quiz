@@ -54,7 +54,7 @@ button:hover {
   box-shadow: 4px 3px 6px black;
 }
 
-#quizstart {
+#startpage {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,7 +69,7 @@ button:hover {
   text-align: center;
 }
 
-#quizpage {
+#quiz {
   display: none;
 }
 
@@ -77,7 +77,7 @@ button:hover {
   display: none;
 }
 
-#endquiz {
+#gameover {
   text-align: center;
   display: none;
   flex-direction: column;
@@ -89,7 +89,7 @@ button:hover {
   border: groove 2px;
 }
 
-#highscorePage {
+#high-scorePage {
   display: none;
   width: 50%;
   border: solid;
@@ -137,7 +137,7 @@ button:hover {
   font-weight: bold;
 }
 
-#quizscore {
+#finalScore {
   padding-bottom: 0.5rem;
   font-size: x-large;
   font-family: sans-serif;
