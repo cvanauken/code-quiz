@@ -18,13 +18,6 @@ var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
-// global variables
-var finalQuestionIndex = quizQuestions.length;
-var currentQuestionIndex = 0;
-var timeLeft = 76;
-var timerInterval;
-var score = 0;
-var correct;
 
 // Quiz question object
 var quizQuestions = [
@@ -85,6 +78,14 @@ var quizQuestions = [
     correctAnswer: "b",
   },
 ];
+
+// global variables
+var finalQuestionIndex = quizQuestions.length;
+var currentQuestionIndex = 0;
+var timeLeft = 76;
+var timerInterval;
+var score = 0;
+var correct;
 
 // cycles through the object array containing the quiz questions to generate the questions and answers.
 function generateQuizQuestion() {
