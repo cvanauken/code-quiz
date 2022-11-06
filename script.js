@@ -154,6 +154,17 @@ submitScoreBtn.addEventListener("click", function highscore() {
   }
 });
 
+// This function displays the high scores page
+function showHighscore() {
+  startQuizDiv.style.display = "none";
+  gameoverDiv.style.display = "none";
+  highscoreContainer.style.display = "flex";
+  highscoreDiv.style.display = "block";
+  endGameBtns.style.display = "flex";
+
+  generateHighscores();
+}
+
 // clears the list for the high scores and generates a new high score list from local storage
 function generateHighscores() {
   highscoreDisplayName.innerHTML = "";
@@ -167,34 +178,6 @@ function generateHighscores() {
     highscoreDisplayName.appendChild(newNameSpan);
     highscoreDisplayScore.appendChild(newScoreSpan);
   }
-}
-
-// This function displays the high scores page
-function showHighscore() {
-  startQuizDiv.style.display = "none";
-  gameoverDiv.style.display = "none";
-  highscoreContainer.style.display = "flex";
-  highscoreDiv.style.display = "block";
-  endGameBtns.style.display = "flex";
-
-  generateHighscores();
-}
-
-// This function clears the local storage
-function clearScore() {
-  window.localStorage.clear();
-  highscoreDisplayName.textContent = "";
-  highscoreDisplayScore.textContent = "";
-}
-
-// This function sets all the variables back to their original values and shows the home page to enable replay of the quiz
-function replayQuiz() {
-  highscoreContainer.style.display = "none";
-  gameoverDiv.style.display = "none";
-  startQuizDiv.style.display = "flex";
-  timeLeft = 76;
-  score = 0;
-  currentQuestionIndex = 0;
 }
 
 // checks the response to each answer
@@ -218,6 +201,23 @@ function checkAnswer(answer) {
   } else {
     showScore();
   }
+}
+
+// This function clears the local storage
+function clearScore() {
+  window.localStorage.clear();
+  highscoreDisplayName.textContent = "";
+  highscoreDisplayScore.textContent = "";
+}
+
+// resets all variables for replay
+function replayQuiz() {
+  highscoreContainer.style.display = "none";
+  gameoverDiv.style.display = "none";
+  startQuizDiv.style.display = "flex";
+  timeLeft = 76;
+  score = 0;
+  currentQuestionIndex = 0;
 }
 
 // This button starts the quiz!
