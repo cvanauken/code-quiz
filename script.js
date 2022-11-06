@@ -87,7 +87,7 @@ var timerInterval;
 var score = 0;
 var correct;
 
-// cycles through the object array containing the quiz questions to generate the questions and answers.
+// generate questions from array
 function generateQuizQuestion() {
   gameoverDiv.style.display = "none";
   if (currentQuestionIndex === finalQuestionIndex) {
@@ -101,13 +101,12 @@ function generateQuizQuestion() {
   buttonD.innerHTML = currentQuestion.choiceD;
 }
 
-// Start Quiz function
+// Start Quiz and timer
 function startQuiz() {
   gameoverDiv.style.display = "none";
   startQuizDiv.style.display = "none";
   generateQuizQuestion();
 
-  //Timer
   timerInterval = setInterval(function () {
     timeLeft--;
     quizTimer.textContent = "Time left: " + timeLeft;
@@ -119,7 +118,29 @@ function startQuiz() {
   }, 1000);
   quizBody.style.display = "block";
 }
-// This function is the score page
+// checks the response to each answer
+function checkAnswer(answer) {
+  correct = quizQuestions[currentQuestionIndex].correctAnswer;
+
+  if (answer === correct && currentQuestionIndex !== finalQuestionIndex) {
+    score++;
+    alert("That Is Correct!");
+    currentQuestionIndex++;
+    generateQuizQuestion();
+    //display in the results div that the answer is correct.
+  } else if (
+    answer !== correct &&
+    currentQuestionIndex !== finalQuestionIndex
+  ) {
+    alert("That Is Incorrect.");
+    currentQuestionIndex++;
+    generateQuizQuestion();
+    //display in the results div that the answer is wrong.
+  } else {
+    showScore();
+  }
+}
+// score page
 function showScore() {
   quizBody.style.display = "none";
   gameoverDiv.style.display = "flex";
@@ -154,7 +175,7 @@ submitScoreBtn.addEventListener("click", function highscore() {
   }
 });
 
-// This function displays the high scores page
+// high scores page
 function showHighscore() {
   startQuizDiv.style.display = "none";
   gameoverDiv.style.display = "none";
@@ -165,7 +186,7 @@ function showHighscore() {
   generateHighscores();
 }
 
-// clears the list for the high scores and generates a new high score list from local storage
+// reset high scores
 function generateHighscores() {
   highscoreDisplayName.innerHTML = "";
   highscoreDisplayScore.innerHTML = "";
@@ -177,29 +198,6 @@ function generateHighscores() {
     newScoreSpan.textContent = highscores[i].score;
     highscoreDisplayName.appendChild(newNameSpan);
     highscoreDisplayScore.appendChild(newScoreSpan);
-  }
-}
-
-// checks the response to each answer
-function checkAnswer(answer) {
-  correct = quizQuestions[currentQuestionIndex].correctAnswer;
-
-  if (answer === correct && currentQuestionIndex !== finalQuestionIndex) {
-    score++;
-    alert("That Is Correct!");
-    currentQuestionIndex++;
-    generateQuizQuestion();
-    //display in the results div that the answer is correct.
-  } else if (
-    answer !== correct &&
-    currentQuestionIndex !== finalQuestionIndex
-  ) {
-    alert("That Is Incorrect.");
-    currentQuestionIndex++;
-    generateQuizQuestion();
-    //display in the results div that the answer is wrong.
-  } else {
-    showScore();
   }
 }
 
