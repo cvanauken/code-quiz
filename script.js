@@ -201,7 +201,7 @@ function generateHighscores() {
   }
 }
 
-// This function clears the local storage
+// clears the local storage
 function clearScore() {
   window.localStorage.clear();
   highscoreDisplayName.textContent = "";
@@ -218,5 +218,5 @@ function replayQuiz() {
   currentQuestionIndex = 0;
 }
 
-// This button starts the quiz!
+// start button
 startQuizButton.addEventListener("click", startQuiz);
