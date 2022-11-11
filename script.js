@@ -123,7 +123,7 @@ function checkAnswer(answer) {
   correct = quizQuestions[currentQuestionIndex].correctAnswer;
 
   if (answer !== correct && currentQuestionIndex !== finalQuestionIndex) {
-    alert("That Is Incorrect.");
+    alert("Incorrect");
     currentQuestionIndex++;
     generateQuizQuestion();
   } else if (
@@ -131,7 +131,7 @@ function checkAnswer(answer) {
     currentQuestionIndex !== finalQuestionIndex
   ) {
     score++;
-    alert("That Is Correct!");
+    alert("Correct");
     currentQuestionIndex++;
     generateQuizQuestion();
   } else {
@@ -151,7 +151,7 @@ function showScore() {
 // submit score function
 submitScoreBtn.addEventListener("click", function highscore() {
   if (highscoreInputName.value === "") {
-    alert("Initials cannot be blank");
+    alert("Must enter initials");
     return false;
   } else {
     var savedHighscores =
