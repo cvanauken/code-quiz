@@ -103,10 +103,6 @@ function generateQuizQuestion() {
 
 // Start Quiz and timer
 function startQuiz() {
-  gameoverDiv.style.display = "none";
-  startQuizDiv.style.display = "none";
-  generateQuizQuestion();
-
   timerInterval = setInterval(function () {
     timeLeft--;
     quizTimer.textContent = "Time left: " + timeLeft;
@@ -117,25 +113,27 @@ function startQuiz() {
     }
   }, 1000);
   quizBody.style.display = "block";
+
+  gameoverDiv.style.display = "none";
+  startQuizDiv.style.display = "none";
+  generateQuizQuestion();
 }
 // checks the response to each answer
 function checkAnswer(answer) {
   correct = quizQuestions[currentQuestionIndex].correctAnswer;
 
-  if (answer === correct && currentQuestionIndex !== finalQuestionIndex) {
+  if (answer !== correct && currentQuestionIndex !== finalQuestionIndex) {
+    alert("That Is Incorrect.");
+    currentQuestionIndex++;
+    generateQuizQuestion();
+  } else if (
+    answer === correct &&
+    currentQuestionIndex !== finalQuestionIndex
+  ) {
     score++;
     alert("That Is Correct!");
     currentQuestionIndex++;
     generateQuizQuestion();
-    //display in the results div that the answer is correct.
-  } else if (
-    answer !== correct &&
-    currentQuestionIndex !== finalQuestionIndex
-  ) {
-    alert("That Is Incorrect.");
-    currentQuestionIndex++;
-    generateQuizQuestion();
-    //display in the results div that the answer is wrong.
   } else {
     showScore();
   }
